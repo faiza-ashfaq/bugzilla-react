@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import GetBugs from './components/GetBugs'
+import GetBugs from '../api/GetBugs'
 
 export default function BugsPage() {
   let params = useParams();
@@ -11,9 +11,6 @@ export default function BugsPage() {
   const reporters = data[2];
   const assignees = data[3];
   const images = data[4];
-  const stringifiedData = useMemo(() => {
-    return JSON.stringify(data || {});
-  }, [data]);
   if (loaded) {
     return error ? (
       <span>Error: {error}</span>
@@ -36,14 +33,14 @@ export default function BugsPage() {
         <tbody>
           {bugs.map((bug, i) =>
             <tr>
-              <td>{bugs[i].title}</td>
-              <td>{bugs[i].bug_type}</td>
-              <td>{bugs[i].status}</td>
-              <td>{bugs[i].deadline || "Not Available"}</td>
+              <td>{bug.title}</td>
+              <td>{bug.bug_type}</td>
+              <td>{bug.status}</td>
+              <td>{bug.deadline || "Not Available"}</td>
               <td><Link to={'/projects/'.concat(params.project_id)}>{project.name}</Link></td>
               <td>{reporters[i].username}</td>
               <td>{assignees[i] ? assignees[i].username : "Null"}</td>
-              <td>{images[i]=="Not Attached" ? images[i] : <a href={images[i]}>Click here to view Screenshot</a>}</td>
+              <td>{images[i]==="Not Attached" ? images[i] : <a href={images[i]}>Click here to view Screenshot</a>}</td>
             </tr>
           )}
           </tbody>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './HomePage';
-import ProjectPage from './ProjectPage';
-import BugsPage from './BugsPage';
-import NavigationPage from './NavigationPage';
+import HomePage from './pages/HomePage';
+import ProjectPage from './pages/ProjectPage';
+import BugsPage from './pages/BugsPage';
+import NavigationPage from './pages/NavigationPage';
 
 class App extends Component {
   render() {

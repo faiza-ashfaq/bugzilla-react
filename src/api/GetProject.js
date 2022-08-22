@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios'
 
 let GetProject = function(id) {
@@ -17,7 +17,7 @@ let GetProject = function(id) {
         setLoaded(true);
       }
     })();
-  }, []);
+  }, [id]);
 
   return {data, error, loaded}
 }

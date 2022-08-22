@@ -7,7 +7,6 @@ export default function HomePage() {
     <div>
       <h1>{'Home Page'}</h1>
       <Link to="/Projects">{'Check out our view projects Page!'}</Link>
-      <Link to="/Bugs">{'Check out our bugs Page!'}</Link>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function GetBugs(project_id) {
         setLoaded(true);
       }
     })();
-  }, []);
+  }, [project_id]);
   console.log(data)
   return {data, error, loaded}
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import GetProject from './components/GetProject';
+import GetProject from '../api/GetProject';
 
 
 export default function ProjectPage() {

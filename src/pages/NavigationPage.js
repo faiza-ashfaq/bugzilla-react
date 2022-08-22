@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import GetCount from './components/GetCount';
-import ProjectForm from './components/ProjectForm';
+import GetCount from '../api/GetCount';
+import ProjectForm from '../components/ProjectForm';
 
 // Our Home Page.  Exciting stuff.
 export default function NavigationPage() {
