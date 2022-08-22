@@ -10,6 +10,7 @@ export default function BugsPage() {
   const project = data[1];
   const reporters = data[2];
   const assignees = data[3];
+  const images = data[4];
   const stringifiedData = useMemo(() => {
     return JSON.stringify(data || {});
   }, [data]);
@@ -28,6 +29,7 @@ export default function BugsPage() {
             <th>Project</th>
             <th>Reporter</th>
             <th>Assignee</th>
+            <th>Screenshot</th>
             <th colSpan="5"></th>
           </tr>
         </thead>
@@ -41,6 +43,7 @@ export default function BugsPage() {
               <td><Link to={'/projects/'.concat(params.project_id)}>{project.name}</Link></td>
               <td>{reporters[i].username}</td>
               <td>{assignees[i] ? assignees[i].username : "Null"}</td>
+              <td>{images[i]=="Not Attached" ? images[i] : <a href={images[i]}>Click here to view Screenshot</a>}</td>
             </tr>
           )}
           </tbody>
