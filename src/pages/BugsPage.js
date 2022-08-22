@@ -6,14 +6,18 @@ import GetBugs from '../api/GetBugs'
 export default function BugsPage() {
   let params = useParams();
   const { data, error, loaded } = GetBugs(params.project_id);
-  const bugs = data
+  const bugs = data[0];
+  const project = data[1];
+  const reporters = data[2];
+  const assignees = data[3];
+  const images = data[4];
   if (loaded) {
     return error ? (
       <span>Error: {error}</span>
     ) : (
       <div>
-        <table className="table">
-        <thead className="thead-light">
+        <table class="table">
+        <thead class="thead-light">
           <tr>
             <th>Title</th>
             <th>Bug type</th>
@@ -33,10 +37,10 @@ export default function BugsPage() {
               <td>{bug.bug_type}</td>
               <td>{bug.status}</td>
               <td>{bug.deadline || "Not Available"}</td>
-              <td><Link to={'/projects/'.concat(params.project_id)}>{bug.project}</Link></td>
-              <td>{bug.reporter}</td>
-              <td>{bug.reporter}</td>
-              <td>{bug.image==="Not Attached" ? bug.image : <a href={bug.image}>Click here to view Screenshot</a>}</td>
+              <td><Link to={'/projects/'.concat(params.project_id)}>{project.name}</Link></td>
+              <td>{reporters[i].username}</td>
+              <td>{assignees[i] ? assignees[i].username : "Null"}</td>
+              <td>{images[i]==="Not Attached" ? images[i] : <a href={images[i]}>Click here to view Screenshot</a>}</td>
             </tr>
           )}
           </tbody>
